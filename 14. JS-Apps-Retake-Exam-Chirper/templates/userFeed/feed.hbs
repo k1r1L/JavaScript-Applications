@@ -1,0 +1,20 @@
+{{> header}}
+{{> navbar}}
+<div class="content">
+    <div class="chirper">
+        <h2 class="titlebar">{{username}}</h2>
+        {{#if isCurrentlyLogged}}
+            {{> createChirpForm}}
+       {{else}}
+            {{#if isFollowed}}
+                <a id="btnFollow" class="chirp-author" href="#/unfollow/:{{username}}">Unfollow</a>
+            {{else}}
+                <a id="btnFollow" class="chirp-author" href="#/follow/:{{username}}">Follow</a>
+            {{/if}}
+        {{/if}}
+        {{> userStats}}
+    </div>
+    {{> chirpList}}
+</div>
+
+{{> footer}}

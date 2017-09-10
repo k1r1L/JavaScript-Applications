@@ -1,0 +1,12 @@
+{{> header}}
+{{> navbar}}
+<div class="content">
+    <div class="chirper">
+        <h2 class="titlebar">{{username}}</h2>
+        {{> createChirpForm}}
+        {{> userStats}}
+    </div>
+    {{> chirpList}}
+</div>
+
+{{> footer}}

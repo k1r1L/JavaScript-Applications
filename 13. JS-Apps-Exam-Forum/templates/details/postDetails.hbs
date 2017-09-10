@@ -1,0 +1,17 @@
+{{> header}}
+<main class="content">
+    {{> menu}}
+    {{> post}}
+    <div class="submitArea">
+        <h1>Post Comment</h1>
+        {{> createCommentForm}}
+    </div>
+    <div class="comments">
+        {{#each comments}}
+            {{> comment}}
+        {{else}}
+            <p>No comments yet.</p>
+        {{/each}}
+    </div>
+</main>
+{{> footer}}

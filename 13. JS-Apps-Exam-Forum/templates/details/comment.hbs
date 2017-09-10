@@ -1,0 +1,8 @@
+<article class="comment">
+    <div class="comment-content">
+        {{content}}
+    </div>
+    {{#if isAuthor}}
+        <a href="#/deleteComment/:{{_id}}?{{postId}}" class="action">[Delete]</a>
+    {{/if}}
+</article>

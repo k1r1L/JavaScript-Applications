@@ -1,0 +1,11 @@
+<form action="#/editPost/:{{_id}}" method="post" class="submitForm">
+    <label>Link URL:</label>
+    <input name="url" type="text" value="{{url}}">
+    <label>Link Title:</label>
+    <input name="title" type="text" value="{{title}}">
+    <label>Link Thumbnail Image (optional):</label>
+    <input name="image" type="text" value="{{imageUrl}}">
+    <label>Comment (optional):</label>
+    <textarea name="description">{{description}}</textarea>
+    <input type="submit" value="Edit Post">
+</form>

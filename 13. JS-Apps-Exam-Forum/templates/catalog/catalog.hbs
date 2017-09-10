@@ -1,0 +1,13 @@
+{{> header}}
+<main class="content">
+    {{> menu}}
+
+    <div class="posts">
+        {{#each posts}}
+            {{> post}}
+        {{else}}
+            <p>No posts yet.</p>
+        {{/each}}
+    </div>
+</main>
+{{> footer}}
