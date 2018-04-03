@@ -1,5 +1,4 @@
 let notify = (() => {
-
     $(document).on({
         ajaxStart: () => $("#loadingBox").show(),
         ajaxStop: () => $('#loadingBox').fadeOut()
