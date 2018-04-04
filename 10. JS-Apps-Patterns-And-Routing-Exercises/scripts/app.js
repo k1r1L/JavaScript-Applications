@@ -31,13 +31,13 @@ $(() => {
             let username = this.params.username;
             let password = this.params.password;
 
-            authenticator.login(username, password)
+            auth.login(username, password)
                 .then(function (userInfo) {
-                    authenticator.saveSession(userInfo);
-                    authenticator.showInfo('Successfully logged in!');
+                    auth.saveSession(userInfo);
+                    auth.showInfo('Successfully logged in!');
                     displayHome(ctx);
                 })
-                .catch(authenticator.handleError)
+                .catch(auth.handleError)
         });
 
         // REGISTER LOGIC
@@ -57,26 +57,26 @@ $(() => {
             let repeatPassword = this.params.repeatPassword;
             
             if (password !== repeatPassword) {
-                authenticator.showError('PASSWORDS MUST MATCH!');
+                auth.showError('PASSWORDS MUST MATCH!');
             } else {
-                authenticator.register(username, password, repeatPassword)
+                auth.register(username, password, repeatPassword)
                     .then(function (userInfo) {
-                        authenticator.saveSession(userInfo);
-                        authenticator.showInfo('Successfully registered!');
+                        auth.saveSession(userInfo);
+                        auth.showInfo('Successfully registered!');
                         displayHome(ctx);
                     })
-                    .catch(authenticator.handleError)
+                    .catch(auth.handleError)
             }
         });
 
         this.get('#/logout', function (ctx) {
-            authenticator.logout()
+            auth.logout()
                 .then(function () {
                     sessionStorage.clear();
-                    authenticator.showInfo('Logged out!');
+                    auth.showInfo('Logged out!');
                     displayHome(ctx);
                 })
-                .catch(authenticator.handleError);
+                .catch(auth.handleError);
         });
 
         // CATALOG LOGIC
@@ -103,8 +103,8 @@ $(() => {
                 .then(function (data) {
                     teamsService.joinTeam(data._id)
                         .then((newData) => {
-                            authenticator.saveSession(newData);
-                            authenticator.showInfo('TEAM HAS BEEN CREATED!');
+                            auth.saveSession(newData);
+                            auth.showInfo('TEAM HAS BEEN CREATED!');
                             displayCatalog(ctx);
                         });
                 });
@@ -140,8 +140,8 @@ $(() => {
         this.get('#/leave', function (ctx) {
             teamsService.leaveTeam()
                 .then(function (response) {
-                    authenticator.saveSession(response);
-                    authenticator.showInfo('TEAM HAS BEEN LEFT!');
+                    auth.saveSession(response);
+                    auth.showInfo('TEAM HAS BEEN LEFT!');
                     displayCatalog(ctx);
                 });
         });
@@ -151,8 +151,8 @@ $(() => {
             let teamId = this.params.id.substr(1);
             teamsService.joinTeam(teamId)
                 .then((data) => {
-                    authenticator.saveSession(data);
-                    authenticator.showInfo('TEAM HAS BEEN JOINED!');
+                    auth.saveSession(data);
+                    auth.showInfo('TEAM HAS BEEN JOINED!');
                     displayCatalog(ctx);
                 });
         });
@@ -183,7 +183,7 @@ $(() => {
 
             teamsService.edit(teamId, teamName, teamComment)
                 .then(function () {
-                    authenticator.showInfo(`TEAM ${teamName} EDITED!`);
+                    auth.showInfo(`TEAM ${teamName} EDITED!`);
                     displayCatalog(ctx);
                 })
         });
