@@ -1,4 +1,4 @@
-let auth = (() => {
+let authenticator = (() => {
     function saveSession(userInfo) {
         let userAuth = userInfo._kmd.authtoken;
         sessionStorage.setItem('authtoken', userAuth);
